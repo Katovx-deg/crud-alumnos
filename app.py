@@ -6,11 +6,10 @@ app.secret_key = 'clave_secreta_123'
 
 
 DB_CONFIG = {
-    'host':   'sql10.freesqldatabase.com',
-    'user':   'sql10826029',
-    'passwd': 'VeNaMBYb3N',
-    'db':     'sql10826029',
-    'port':   3306,
+    'host':   'localhost',
+    'user':   'root',
+    'passwd': '',       
+    'db':     'taller_alumnos',
     'charset':'utf8mb4',
 }
 
@@ -27,6 +26,18 @@ def index():
     db.close()
     return render_template('index.html', alumnos=alumnos)
 
+@app.route('/ver/<int:id>')
+def ver(id):
+    db  = get_db()
+    cur = db.cursor()
+    cur.execute("SELECT id, nombre, apellido, edad, correo FROM alumnos WHERE id=%s", (id,))
+    alumno = cur.fetchone()
+    db.close()
+    if not alumno:
+        flash('Alumno no encontrado.', 'danger')
+        return redirect(url_for('index'))
+    return render_template('ver.html', alumno=alumno)
+
 @app.route('/crear', methods=['GET', 'POST'])
 def crear():
     if request.method == 'POST':
@@ -36,7 +47,7 @@ def crear():
         correo   = request.form['correo'].strip()
 
         if not nombre or not apellido or not edad or not correo:
-            flash('⚠️ Todos los campos son obligatorios.', 'warning')
+            flash('Todos los campos son obligatorios.', 'warning')
             return redirect(url_for('crear'))
 
         db  = get_db()
@@ -96,3 +107,5 @@ def eliminar(id):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    

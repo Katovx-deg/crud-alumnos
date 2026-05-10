@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card p-4">
+      <h5 class="fw-bold mb-4">Detalle del Alumno</h5>
+      <p><strong>ID:</strong> {{ alumno[0] }}</p>
+      <p><strong>Nombre:</strong> {{ alumno[1] }}</p>
+      <p><strong>Apellido:</strong> {{ alumno[2] }}</p>
+      <p><strong>Edad:</strong> {{ alumno[3] }}</p>
+      <p><strong>Correo:</strong> {{ alumno[4] }}</p>
+      <a href="{{ url_for('index') }}" class="btn btn-outline-secondary mt-3">← Volver</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -29,6 +29,7 @@
             <td>{{ a[3] }}</td>
             <td>{{ a[4] }}</td>
             <td class="text-center">
+              <a href="{{ url_for('ver', id=a[0]) }}" class="btn btn-sm btn-info me-1">Ver</a>
               <a href="{{ url_for('editar', id=a[0]) }}" class="btn btn-sm btn-warning me-1">Editar</a>
               <a href="{{ url_for('eliminar', id=a[0]) }}"
                  class="btn btn-sm btn-danger"
