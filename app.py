@@ -6,10 +6,11 @@ app.secret_key = 'clave_secreta_123'
 
 
 DB_CONFIG = {
-    'host':   'localhost',
-    'user':   'root',
-    'passwd': '',       
-    'db':     'taller_alumnos',
+    'host':   'sql10.freesqldatabase.com',
+    'user':   'sql10826029',
+    'passwd': 'VeNaMBYb3N',
+    'db':     'sql10826029',
+    'port':   3306,
     'charset':'utf8mb4',
 }
 
