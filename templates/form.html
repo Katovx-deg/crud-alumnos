@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h5 class="fw-bold mb-4">{{ accion }} Alumno</h5>
+
+      <form method="POST">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Nombre</label>
+          <input type="text" name="nombre" class="form-control"
+                 value="{{ alumno[1] if alumno else '' }}" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Apellido</label>
+          <input type="text" name="apellido" class="form-control"
+                 value="{{ alumno[2] if alumno else '' }}" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Edad</label>
+          <input type="number" name="edad" class="form-control" min="1" max="120"
+                 value="{{ alumno[3] if alumno else '' }}" required>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Correo electrónico</label>
+          <input type="email" name="correo" class="form-control"
+                 value="{{ alumno[4] if alumno else '' }}" required>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary w-100">{{ accion }}</button>
+          <a href="{{ url_for('index') }}" class="btn btn-outline-secondary w-100">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
